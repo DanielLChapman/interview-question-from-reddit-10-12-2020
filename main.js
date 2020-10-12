@@ -5,15 +5,25 @@ class TreeNode2 {
         this.data = data;
         this.descendents = {};
     }
+
+    setName(value) {
+        this.name = value;
+    }
+    setData(value) {
+        this.data = value;
+    }
+
 }
 
-let root = new TreeNode2();
+let root = new TreeNode2('Root', '');
 
 //grabs the url from the input
 async function grabUrl() {
     let urlInput = document.getElementById('url').value;
 
     console.log(urlInput);
+    root.setData = urlInput;
+    
 
     await fetch(urlInput)
         .then(
@@ -27,12 +37,17 @@ async function grabUrl() {
                 response.json().then(function(data) {
                     json = data;
                     convertData(root, json);
+                    document.getElementById('root').setAttribute('node', 'root');
+                    let htmlObject = document.querySelector('#root h3');
+                    htmlObject.innerHTML='Root';
                 });
             }
         )
         .catch(function(err) {
             console.log('Fetch Error', err);
         });
+
+    
 }
 
 function convertData(currentNode, data) {
@@ -53,8 +68,6 @@ function convertData(currentNode, data) {
         }
 
     })
-
-    console.log(root);
 }
 
 
@@ -62,11 +75,15 @@ function convertData(currentNode, data) {
 //custom html component
 class TreeNode extends HTMLElement {
 
+    
     //check if the component is expanded
     get expand() {
         return this.hasAttribute('expand');
     }
 
+    get node() {
+        return this.getAttribute('node');
+    }
     //set the expand option for component
     set expand(val) {
         if(val) {
@@ -89,9 +106,16 @@ class TreeNode extends HTMLElement {
     constructor() {
         super();
 
+        // attaches shadow tree and returns shadow root reference
+        // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow
+        //const shadow = this.attachShadow({ mode: 'open' });
+        
         this.addEventListener('click', e => {
             this.switchExpand();
-        })
+            //check for data underneath
+            console.log(this.node);
+        });
+
     }
 }
 
