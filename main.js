@@ -1,7 +1,45 @@
+let json = {};
+
 //grabs the url from the input
-function grabUrl() {
-    let urlInput = document.getElementById('url');
-    console.log(urlInput.value);
+async function grabUrl() {
+    let urlInput = document.getElementById('url').value;
+
+    console.log(urlInput);
+
+    await fetch(urlInput)
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Error ' + response.status);
+                    return;
+                }
+            
+                //convert to json and move onto next function
+                response.json().then(function(data) {
+                    json = data;
+                    convertData(json);
+                });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+}
+
+function convertData(data) {
+    console.log(data);
+}
+
+class TreeNode2 {
+    constructor(name, data) {
+        this.name = name;
+        this.data = data;
+        this.descendents = [];
+    }
+}
+
+function convertJSONToTree(jsondata) {
+
 }
 
 //custom html component
