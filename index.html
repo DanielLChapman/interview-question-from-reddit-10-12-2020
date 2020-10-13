@@ -7,22 +7,18 @@
   </head>
   <body>
     <h1>Json Tree Expander</h1>
-
-    <section class="url">
-        <label for="url">
-            URL: 
-            <input type="text" id="url" value="https://api.arcsecond.io/swagger.json" />
-        </label>
-        <input type="submit" value="Submit" onclick="grabUrl()">
-    </section>
-
-    <main>
+        <section class="url">
+            <label for="url">
+                URL: 
+                <input type="text" id="url" value="https://breakingbadapi.com/api/characters" />
+            </label>
+            <input type="submit" value="Submit" class="submit-button" onclick="urlSubmit()">
+        </section>
 
         <tree-node id="root">
             <h3></h3>
         </tree-node>
         
-    </main>
 
     <script src="main.js"></script>
     
