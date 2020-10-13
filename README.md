@@ -8,3 +8,4 @@ The page that contains the component must be able to control the URL from which 
 
 The choice of visual style and technology stack is up to you."
 
+Functionally it works, didn't worry too much about making it pretty as this was just an exploration of web components

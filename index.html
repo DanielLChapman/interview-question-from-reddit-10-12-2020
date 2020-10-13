@@ -7,20 +7,23 @@
   </head>
   <body>
     <h1>Json Tree Expander</h1>
-        <section class="url">
-            <label for="url">
-                URL: 
-                <input type="text" id="url" value="https://breakingbadapi.com/api/characters" />
-            </label>
-            <input type="submit" value="Submit" class="submit-button" onclick="urlSubmit()">
-        </section>
+        <main-view>
 
-        <tree-node id="root">
-            <h3></h3>
-        </tree-node>
+
+        </main-view>
         
+        <template id="tree-node-template">
+            
+            <ul>
+                <li class="name"><h3>Name</h3></li>
+                <li class="data"><h5>Data</h5></li>
+                <li class="descendents">
+                </li>
+            </ul>
 
-    <script src="main.js"></script>
+        </template>
+
+    <script src="tree.js"></script>
     
 
   </body>

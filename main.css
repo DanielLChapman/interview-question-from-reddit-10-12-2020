@@ -40,3 +40,6 @@ ul li ul li {
   width: 100%;
 }
 
+label {
+    color: red;
+}
