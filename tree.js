@@ -252,6 +252,15 @@ class Tree extends HTMLElement {
             let label = document.createElement('label');
             label.htmlFor = id;
             label.classList.add('for-checkbox');
+            label.onclick = function() {
+                if (this.classList.contains('expanded')) {
+                    this.classList.remove('expanded');
+                    this.innerHTML = "<h5>Expand children \n</h5>";
+                } else {
+                    this.classList.add('expanded');
+                    this.innerHTML = "<h5>Close children \n</h5>";
+                }
+            }
             let checkbox = document.createElement('input');
             checkbox.type = "checkbox";
             checkbox.name = "name";
@@ -263,6 +272,7 @@ class Tree extends HTMLElement {
             let info = document.createElement('h5');
             info.innerText = 'Expand Children \n';
             label.append(info);
+            
 
             //append all children + label + checkbox to the dom object
             content.querySelector('.descendents').append(label);
